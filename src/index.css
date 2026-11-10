@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Times New Roman", Tinos, Times, serif;
+  --font-sans: "Times New Roman", Tinos, Times, serif;
+}
+
+:root {
+  font-family: "Times New Roman", Tinos, Times, serif;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: normal;
+  word-spacing: normal;
+  color-scheme: light;
+}
+
+/* 1. Dùng Times New Roman thống nhất cho văn bản giao diện */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", Times, serif;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: 1.5;
+  background-color: #f8fafc;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+/* Đảm bảo toàn bộ văn bản không bị lỗi tách dấu do letter-spacing */
+h1, h2, h3, h4, h5, h6, p, span, a, label, li, td, th {
+  letter-spacing: normal;
+}
+
+/* Không ép font văn bản lên icon hoặc bộ hiển thị công thức toán */
+.font-mono, code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: normal;
+}
+
+/* Tabular numerals for educational data tables & metrics */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

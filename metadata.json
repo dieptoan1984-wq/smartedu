@@ -1,0 +1,6 @@
+{
+  "name": "Smart EDU – Nền tảng học tập tương tác và hỗ trợ kiểm tra, đánh giá cấp THCS",
+  "description": "Nền tảng học tập tương tác và hỗ trợ kiểm tra, đánh giá cấp THCS (Lớp 6–9, tất cả các môn, 78 chức năng theo 6 nhóm nghiệp vụ và 13 bảng giao diện).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
