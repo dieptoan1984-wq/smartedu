@@ -34,6 +34,7 @@ export const Header: React.FC = () => {
     openHome,
     openStudentSpace,
     openTeacherSpace,
+    openAdminSpace,
     openAuth,
     academicYear,
     setAcademicYear,
@@ -90,6 +91,13 @@ export const Header: React.FC = () => {
           {currentView === 'teacher' && (
             <div className="hidden sm:flex items-center gap-2 pl-2 border-l border-slate-300 text-sm font-semibold text-slate-700">
               <span>Không gian giáo viên</span>
+            </div>
+          )}
+
+          {/* Nếu đang ở Không gian quản trị & thẩm định */}
+          {currentView === 'admin' && (
+            <div className="hidden sm:flex items-center gap-2 pl-2 border-l border-slate-300 text-sm font-semibold text-purple-900">
+              <span>Quản trị &amp; Thẩm định chuyên môn</span>
             </div>
           )}
 
@@ -245,6 +253,17 @@ export const Header: React.FC = () => {
 
                   <button
                     onClick={() => {
+                      openAdminSpace();
+                      setIsUserMenuOpen(false);
+                    }}
+                    className="w-full text-left px-3 py-2 rounded-xl hover:bg-purple-50 text-purple-900 flex items-center gap-2.5 cursor-pointer font-semibold"
+                  >
+                    <Shield className="w-4 h-4 text-purple-700" />
+                    <span>Quản trị &amp; Thẩm định</span>
+                  </button>
+
+                  <button
+                    onClick={() => {
                       openAuth();
                       setIsUserMenuOpen(false);
                     }}
@@ -306,6 +325,12 @@ export const Header: React.FC = () => {
               className={`p-2.5 rounded-xl text-left ${currentView === 'teacher' ? 'bg-[#1A56DB] text-white' : 'hover:bg-slate-100'}`}
             >
               Giáo viên
+            </button>
+            <button
+              onClick={openAdminSpace}
+              className={`p-2.5 rounded-xl text-left ${currentView === 'admin' ? 'bg-purple-800 text-white' : 'hover:bg-slate-100'}`}
+            >
+              Quản trị &amp; Thẩm định
             </button>
             <button
               onClick={() => openStudentSpace(false)}

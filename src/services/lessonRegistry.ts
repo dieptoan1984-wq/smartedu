@@ -30,7 +30,7 @@ export interface SubjectCurriculumDef {
 }
 
 // Nội dung HTML tương tác chuẩn cho Tin học 6 - Bài 1: Thông tin và dữ liệu
-const TIN_HOC_6_BAI_1_HTML = `<!DOCTYPE html>
+export const TIN_HOC_6_BAI_1_HTML = `<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />

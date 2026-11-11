@@ -10,7 +10,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { FunctionItem } from '../types/smartEduData';
 
-export type AppView = 'home' | 'student' | 'teacher' | 'materials' | 'auth';
+export type AppView = 'home' | 'student' | 'teacher' | 'materials' | 'auth' | 'admin';
 
 export type StudentSubSection =
   | 'dashboard'
@@ -28,11 +28,13 @@ export type TeacherSubSection =
   | 'classes'
   | 'authoring'
   | 'questions'
+  | 'assignments'
   | 'test_dossier'
   | 'games'
   | 'grading'
   | 'results'
-  | 'shared_materials';
+  | 'shared_materials'
+  | 'student_qa';
 
 export type MainNavSection = 'ALL' | 'HocSinh' | 'GiaoVien' | 'KiemTra' | 'TroChoi' | 'QuanTri' | 'NghienCuu';
 export type ActiveTab =
@@ -78,6 +80,7 @@ interface NavigationContextType {
   openHome: () => void;
   openStudentSpace: (startInteractiveLesson?: boolean) => void;
   openTeacherSpace: () => void;
+  openAdminSpace: () => void;
   openAuth: (redirectView?: AppView) => void;
   openLessonPlayer: () => void;
 
@@ -128,6 +131,9 @@ const getInitialRouting = (): { view: AppView; section: StudentSubSection; isVie
 
   if (pathname.startsWith('/giao-vien')) {
     return { view: 'teacher', section: 'dashboard', isViewingLesson: false };
+  }
+  if (pathname.startsWith('/quan-tri') || pathname.startsWith('/admin')) {
+    return { view: 'admin', section: 'dashboard', isViewingLesson: false };
   }
   if (pathname.startsWith('/dang-nhap') || pathname.startsWith('/auth')) {
     return { view: 'auth', section: 'dashboard', isViewingLesson: false };
@@ -204,6 +210,9 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     } else if (view === 'teacher') {
       updateBrowserUrl('/giao-vien');
       setIsViewingLesson(false);
+    } else if (view === 'admin') {
+      updateBrowserUrl('/quan-tri');
+      setIsViewingLesson(false);
     } else if (view === 'auth') {
       updateBrowserUrl('/dang-nhap');
     } else if (view === 'student') {
@@ -272,6 +281,13 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setIsMobileMenuOpen(false);
   };
 
+  const openAdminSpace = () => {
+    setCurrentView('admin');
+    setActiveTabState('admin' as any);
+    setIsViewingLesson(false);
+    setIsMobileMenuOpen(false);
+  };
+
   const openAuth = () => {
     setCurrentView('auth');
     setActiveTabState('login');
@@ -317,6 +333,7 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         openHome,
         openStudentSpace,
         openTeacherSpace,
+        openAdminSpace,
         openAuth,
         openLessonPlayer,
         isTechSpecOpen,

@@ -14,6 +14,7 @@ import { Header } from './components/common/Header';
 import { HomeView } from './components/home/HomeView';
 import { StudentWorkspaceContainer } from './components/student/StudentWorkspaceContainer';
 import { TeacherWorkspaceView } from './components/teacher/TeacherWorkspaceView';
+import { AdminWorkspaceContainer } from './components/admin/AdminWorkspaceContainer';
 import { LoginView } from './components/auth/LoginView';
 import { UnimplementedModal } from './components/common/UnimplementedModal';
 import { TechSpecDrawer } from './components/common/TechSpecDrawer';
@@ -34,6 +35,8 @@ const MainAppContent: React.FC = () => {
         {currentView === 'student' && <StudentWorkspaceContainer />}
 
         {currentView === 'teacher' && <TeacherWorkspaceView />}
+
+        {currentView === 'admin' && <AdminWorkspaceContainer />}
 
         {currentView === 'auth' && (
           <div className="max-w-4xl mx-auto py-4">
